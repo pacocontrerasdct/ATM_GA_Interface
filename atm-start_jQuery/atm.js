@@ -1,6 +1,7 @@
 $(document).ready(function(){
   console.log('Ready!!!');
 
+var balanceCurrentAccount = 0;
 
 
 
@@ -14,30 +15,49 @@ function changeBackgroundColor(){
 }
 
 function getDepositAmount(){
- deposit1 = $('input#deposit1');
- console.log(deposit1);
-   $(deposit1).on('click', function(e) {
+  deposit1 = $('input#deposit1');
+  console.log(deposit1);
+  // On click getting info from input#amount1
+  $(deposit1).on('click', function(e) {
     console.log('Hello deposit 1');
     amount1 = $('input#amount1');
+    // getting the value itself
     value1 = amount1[0].value;
     console.log(value1);
-    
+    // add value to var balanceCurrentAccount
+    balanceCurrentAccount += parseInt(value1);
+    // showing inside current account screen balance
     idBalance = $('div#balance1')[0];
-    idBalance = $(idBalance).html('$' + value1);
-    
-
-    //balance1 = $('input#balance1');
-    //balance = balance1[0].outerText;
-    console.log(idBalance);
+    idBalance = $(idBalance).html('$' + balanceCurrentAccount);
+    console.log(balanceCurrentAccount);
     });
 }
 getDepositAmount();
 
 
 function getWithdrawAmount(){
+  withdraw1 = $('input#withdraw1');
+  console.log(withdraw1);
+  // On click getting info from input#withdraw1
+  $(withdraw1).on('click', function(e) {
+    console.log('Hello withdraw 1');
+    amount1 = $('input#amount1');
+    // getting the value itself
+    value1 = amount1[0].value;
+    console.log(value1);
+    // sustracting value to var balanceCurrentAccount
+    balanceCurrentAccount -= parseInt(value1);
+    // showing inside current account screen balance
+    idBalance = $('div#balance1')[0];
+    idBalance = $(idBalance).html('$' + balanceCurrentAccount);
+    console.log(balanceCurrentAccount);
+    }); 
+}
+getWithdrawAmount();
+
+function cleaningInputs(){
   
 }
-
 
 
 
